@@ -3,7 +3,7 @@ function Footer() {
 
     return (
       <>
-        <h1>Hello, Footer</h1>
+        <p>&copy;2023</p>
       </>
     )
   }
