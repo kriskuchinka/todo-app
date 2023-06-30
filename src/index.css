@@ -71,7 +71,7 @@ button:focus-visible {
 /* begin user styling */
 body {
   background-color: teal;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -81,7 +81,7 @@ body {
 }
 
 h1 {
-  font-family: 'Kablammo', cursive;
+  font-family: "Kablammo", cursive;
 }
 
 .paper {

@@ -4,8 +4,7 @@ import toDoData from "../../toDoData";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
-import Input from "@mui/material/Input";
-import Button from "@mui/material/Button";
+import { Stack, Input, Button } from "@mui/material";
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -75,32 +74,46 @@ function MainContent() {
     <>
       {isPencilClicked && toDoId === item.id ? (
         <>
-          <Input
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Add Item"
-            value={inputValue}
-          />
-          <Button onClick={(e) => updateItem(e, item.id)} variant="contained">
-            Update
-          </Button>
-          <Button onClick={() => setIsPencilClicked(false)} variant="contained">
-            Cancel
-          </Button>
+          <Stack spacing={2} direction="row">
+            <Input
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Add Item"
+              value={inputValue}
+            />
+            <Button onClick={(e) => updateItem(e, item.id)} variant="contained">
+              Update
+            </Button>
+            <Button
+              onClick={() => setIsPencilClicked(false)}
+              variant="contained"
+            >
+              Cancel
+            </Button>
+          </Stack>
         </>
       ) : (
         <>
-          {" "}
+          {/* <Stack spacing={2} direction="row"> */}{" "}
           <FormControlLabel
             control={
-              <Checkbox
-                checked={item.completed}
-                onChange={() => handleCheckBoxClick(item.id)}
-              />
+              <>
+                <Checkbox
+                  checked={item.completed}
+                  onChange={() => handleCheckBoxClick(item.id)}
+                />
+                {/* <Stack spacing={0} direction="row"> */}
+                <EditIcon
+                  onClick={() => handlePencilClick(item.id, item.text)}
+                />
+                <DeleteForeverIcon
+                  onClick={() => handleRemoveToDoItem(item.id)}
+                />
+                {/* </Stack> */}
+              </>
             }
             label={item.text}
           />
-          <EditIcon onClick={() => handlePencilClick(item.id, item.text)} />
-          <DeleteForeverIcon onClick={() => handleRemoveToDoItem(item.id)} />
+          {/* </Stack> */}
         </>
       )}
       {toDoId !== item.id && <></>}
@@ -111,14 +124,17 @@ function MainContent() {
     <>
       <section className="paper">
         <h1>Things I Need To Do:</h1>
+
         {mappedCheckList}
-        <Input
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Add Item"
-        />
-        <Button onClick={addItem} variant="contained">
-          Add Item
-        </Button>
+        <Stack spacing={2} direction="row">
+          <Input
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Add Item"
+          />
+          <Button onClick={addItem} variant="contained">
+            Add Item
+          </Button>
+        </Stack>
       </section>
     </>
   );

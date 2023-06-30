@@ -1,7 +1,7 @@
 function Header() {
   return (
     <>
-      <h1 className="bg-primary">From the Desk of Kris Kuchinka</h1>
+      <h1>From the Desk of Kris Kuchinka</h1>
     </>
   );
 }
